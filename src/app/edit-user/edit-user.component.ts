@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {User} from "../model/user.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {first} from "rxjs/operators";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-edit-user',
@@ -14,6 +15,8 @@ export class EditUserComponent implements OnInit {
 
   user: User;
   editForm: FormGroup;
+  private route: ActivatedRoute;
+  postData:any;
   constructor(private formBuilder: FormBuilder,private router: Router, private userService: UserService) { }
 
   ngOnInit() {
@@ -33,6 +36,8 @@ export class EditUserComponent implements OnInit {
       .subscribe( data => {
         this.editForm.setValue(data);
       });
+   this.postData=this.route.snapshot.paramMap.get("Result")
+
   }
 
   onSubmit() {

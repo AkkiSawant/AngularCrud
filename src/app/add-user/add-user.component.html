@@ -1,6 +1,6 @@
 <div class="col-md-6">
   <h2 class="text-center">Add User</h2>
-  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <!-- <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="email">Email address:</label>
       <input type="email" formControlName="email" placeholder="Email" name="email" class="form-control" id="email">
@@ -17,5 +17,44 @@
     </div>
 
     <button class="btn btn-success">Update</button>
+  </form> -->
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="banking_customer_no">Banking Customer No:</label>
+      <input type="text" formControlName="banking_customer_no" placeholder="Banking Customer No" name="banking_customer_no" class="form-control" id="banking_customer_no">
+    </div>
+
+    <div class="form-group">
+      <label for="customer_no">Customer No:</label>
+      <input formControlName="customer_no" placeholder="Customer No" name="customer_no" class="form-control" id="customer_no">
+    </div>
+
+    <div class="form-group">
+      <label for="one_click_id">One Click Id:</label>
+      <input formControlName="one_click_id" placeholder="Last name" name="one_click_id" class="form-control" id="one_click_id">
+    </div>
+
+     <div class="form-group">
+      <label for="name">Name:</label>
+      <input formControlName="name" placeholder="Name" name="name" class="form-control" id="name">
+    </div>
+
+     <div class="form-group">
+      <label for="mid_name">Mid Name:</label>
+      <input formControlName="mid_name" placeholder="Mid name" name="mid_name" class="form-control" id="mid_name">
+    </div>
+
+     <div class="form-group">
+      <label for="surname">Surname:</label>
+      <input formControlName="surname" placeholder="Last name" name="surname" class="form-control" id="surname">
+    </div>
+
+    <button class="btn btn-success">Update</button>
   </form>
+
+
+
+  <button (click)="getTestData()"  type="submit">GetData</button>
+  <!-- {{testData.name}}
+  {{testData.id}} -->
 </div>

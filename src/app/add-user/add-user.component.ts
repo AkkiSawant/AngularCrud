@@ -15,13 +15,25 @@ export class AddUserComponent implements OnInit {
 
   addForm: FormGroup;
 
+  testData:any;
+
+  
+
   ngOnInit() {
 
+    // this.addForm = this.formBuilder.group({
+    //   id: [],
+    //   email: ['', Validators.required],
+    //   firstName: ['', Validators.required],
+    //   lastName: ['', Validators.required]
+    // });
     this.addForm = this.formBuilder.group({
-      id: [],
-      email: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
+      banking_customer_no: [],
+      customer_no: ['', Validators.required],
+      one_click_id: ['', Validators.required],
+      name: ['', Validators.required],
+      mid_name:[],
+      surname:[]
     });
 
   }
@@ -30,7 +42,17 @@ export class AddUserComponent implements OnInit {
     this.userService.createUser(this.addForm.value)
       .subscribe( data => {
         this.router.navigate(['list-user']);
+        alert("Data from post"+JSON.stringify(data));
+        console.log(data);
       });
+  }
+
+  getTestData(){
+    this.userService.getTestData().subscribe(data=>{
+      this.testData=data;
+      alert("Data from get call" + JSON.stringify(this.testData));
+      console.log(JSON.stringify(data));
+    });
   }
 
 }

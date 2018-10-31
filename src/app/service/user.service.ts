@@ -22,14 +22,19 @@ export class UserService {
   }
 
   createUser(user: User) {
-    return this.http.post(this.baseUrl, user);
+    console.log(user);
+    return this.http.post("http://localhost:8080/mycardsolutions/createCustomer", user);
   }
 
   updateUser(user: User) {
-    return this.http.put(this.baseUrl + '/' + user.id, user);
+    return this.http.put(this.baseUrl + '/' + user.banking_customer_no, user.banking_customer_no);
   }
 
-  deleteUser(id: number) {
+  deleteUser(id: string) {
     return this.http.delete(this.baseUrl + '/' + id);
+  }
+
+  getTestData(){
+    return this.http.get("http://localhost:8080/mycardsolutions/");  
   }
 }
