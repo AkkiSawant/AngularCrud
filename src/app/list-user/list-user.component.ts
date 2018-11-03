@@ -18,10 +18,13 @@ export class ListUserComponent implements OnInit {
   ngOnInit() {
     this.userService.getUsers()
       .subscribe( data => {
-        this.users = data;
+        if(data==null){
+          this.users=[{"banking_customer_no":"121","id":1,"customer_no":"2323","one_click_id":"66","name":"James","mid_name":"White","surname":"Gosling"}]
+        }else{
+          this.users = data;
+        }
+        
       });
-
-      
   }
 
 
@@ -34,7 +37,7 @@ export class ListUserComponent implements OnInit {
 
   editUser(user: User): void {
     localStorage.removeItem("editUserId");
-    localStorage.setItem("editUserId", user.banking_customer_no.toString());
+    localStorage.setItem("editUserId", user.id.toString());
     this.router.navigate(['edit-user']);
   };
 

@@ -5,7 +5,7 @@ import {User} from "../model/user.model";
 @Injectable()
 export class UserService {
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'https://jsonplaceholder.typicode.com/users';
+  baseUrl: string = "http://localhost:8080/mycardsolutions/createCustomer";
 
   getUsers() {
     /* let fakeUsers = [{id: 1, firstName: 'Dhiraj', lastName: 'Ray', email: 'dhiraj@gmail.com'},
@@ -23,15 +23,15 @@ export class UserService {
 
   createUser(user: User) {
     console.log(user);
-    return this.http.post("http://localhost:8080/mycardsolutions/createCustomer", user);
+    return this.http.post(this.baseUrl, user);
   }
 
   updateUser(user: User) {
-    return this.http.put(this.baseUrl + '/' + user.banking_customer_no, user.banking_customer_no);
+    return this.http.put(this.baseUrl, user);
   }
 
   deleteUser(id: string) {
-    return this.http.delete(this.baseUrl + '/' + id);
+    return this.http.delete("http://localhost:8080/mycardsolutions/");
   }
 
   getTestData(){

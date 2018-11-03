@@ -27,16 +27,24 @@ export class EditUserComponent implements OnInit {
       return;
     }
     this.editForm = this.formBuilder.group({
-      id: [],
-      username: ['', Validators.required],
+      banking_customer_no: [],
+      customer_no: ['', Validators.required],
+      one_click_id: ['', Validators.required],
       name: ['', Validators.required],
-      email: ['', Validators.required]
+      mid_name:[],
+      surname:[]
     });
+   
     this.userService.getUserById(+userId)
       .subscribe( data => {
-        this.editForm.setValue(data);
+        if(data==null){
+           this.editForm.setValue({"banking_customer_no":"121","customer_no":"2323","one_click_id":"66","name":"James","mid_name":"White","surname":"Gosling"});
+        }else{
+          this.editForm.setValue(data);
+        }
+        
       });
-   this.postData=this.route.snapshot.paramMap.get("Result")
+   
 
   }
 
@@ -51,5 +59,11 @@ export class EditUserComponent implements OnInit {
           alert(error);
         });
   }
+
+  goBack(){
+    this.router.navigate(['list-user']);
+  }
+
+
 
 }
